@@ -20,7 +20,7 @@ void ShowArray(string[] Array)
     Console.WriteLine();
 }
 
-int Size(string[] Array)
+int []Size(string[] Array)
 {
     int M = 0;
     for (int i = 0; i < Array.Length; i++)
@@ -28,11 +28,7 @@ int Size(string[] Array)
         int b = Array[i].Length;
         if (b <= 3) M++;
     }
-    return M;
-}
-
-string[] ToThree(int M, string[] Array)
-{
+  
     string[] newArray = new string[M];
     int j = 0;
     for (int i = 0; i < Array.Length; i++)
@@ -43,9 +39,8 @@ string[] ToThree(int M, string[] Array)
             newArray[j] = Array[i];
             j++;
         }
-
     }
-    return newArray;
+    return Array;
 }
 
 
@@ -56,6 +51,6 @@ string[] arr = Array(N);
 
 ShowArray(arr);
 
-string[] arr2 = ToThree(Size(arr), arr);
+string[] arr2 = Size(arr);
 
 ShowArray(arr2);
