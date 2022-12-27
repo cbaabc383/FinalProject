@@ -1,4 +1,4 @@
-﻿string[] Array(int N)
+﻿string[] CreateArray(int N)
 {
     string[] newArray = new string[N];
     for (int i = 0; i < N; i++)
@@ -11,46 +11,47 @@
 void ShowArray(string[] Array)
 {
     Console.Write("[");
-    for (int i = 0; i < Array.Length - 1; i++)
-    {
-        Console.Write($"'{Array[i]}', ");
-    }
-    int c = Array.Length - 1;
-    Console.Write($"'{Array[c]}']");
+
+    if (Array.Length == 0)
+        Console.Write("");
+
+    else
+        {
+            for (int i = 0; i < Array.Length - 1; i++)
+                Console.Write($"'{Array[i]}', ");
+            Console.Write($"'{Array[Array.Length - 1]}'");
+        }
+
+    Console.Write("]");
     Console.WriteLine();
 }
 
-int []Size(string[] Array)
+string[] ShortString(string[] Array)
 {
     int M = 0;
     for (int i = 0; i < Array.Length; i++)
-    {
-        int b = Array[i].Length;
-        if (b <= 3) M++;
-    }
-  
+        if (Array[i].Length <= 3) M++;
+
     string[] newArray = new string[M];
     int j = 0;
     for (int i = 0; i < Array.Length; i++)
     {
-        int b = Array[i].Length;
-        if (b <= 3)
+        if (Array[i].Length <= 3)
         {
             newArray[j] = Array[i];
             j++;
         }
     }
-    return Array;
+    return newArray;
 }
-
 
 Console.WriteLine("Input size of array and it's elements:");
 int N = Convert.ToInt32(Console.ReadLine());
 
-string[] arr = Array(N);
+string[] first = CreateArray(N);
 
-ShowArray(arr);
+ShowArray(first);
 
-string[] arr2 = Size(arr);
+string[] second = ShortString(first);
 
-ShowArray(arr2);
+ShowArray(second);
